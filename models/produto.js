@@ -10,8 +10,8 @@ const Produto = sequelize.define('Produto', {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    preco:{
-        type: Sequelize.FLOAT,
+    ativo:{
+        type: Sequelize.BOOLEAN,
         allowNull: false
     }
 

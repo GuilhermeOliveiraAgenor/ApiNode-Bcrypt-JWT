@@ -5,6 +5,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var depositoRouter = require('./routes/deposito');
+var produtoRouter = require('./routes/produto');
+var MovimentoProdutoRouter = require('./routes/movimentoProduto');
 
 var app = express();
 
@@ -16,6 +19,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/deposito', depositoRouter);
+app.use('/produto', produtoRouter);
+app.use('/movimento', MovimentoProdutoRouter);
 
 const db = require('./models');//sequelize le models para criar tabela
 
