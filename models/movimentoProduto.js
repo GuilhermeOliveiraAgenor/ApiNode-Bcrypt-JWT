@@ -5,7 +5,7 @@ module.exports = (sequelize) =>{
         id:{
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         codigoDeposito:{
             type: Sequelize.INTEGER,

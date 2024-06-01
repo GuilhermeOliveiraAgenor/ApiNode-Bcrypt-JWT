@@ -13,8 +13,11 @@ var compraController = require('./routes/compra');/*
 var centroRouter = require('./routes/centro');*/
 var requisicaoRouter = require('./routes/requisicao');/*
 var departamentoRouter = require('./routes/departamento');
-var fornecedorRouter = require('./routes/fornecedor');
-*/
+var fornecedorRouter = require('./routes/fornecedor');*/
+var nfRouter = require('./routes/notaFiscal');
+var tituloRouter = require('./routes/titulo');
+var MovimentoTituloRouter = require('./routes/movimentoTitulo');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -27,14 +30,17 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/deposito', depositoRouter);
 app.use('/produto', produtoRouter);
-app.use('/movimento', MovimentoProdutoRouter);*/
+app.use('/movimentoProduto', MovimentoProdutoRouter);*/
 app.use('/cotacao', cotacaoController);
 app.use('/compra', compraController);/*
 app.use('/centro', centroRouter);*/
 app.use('/requisicao', requisicaoRouter);/*
 app.use('/departamento', departamentoRouter);
-app.use('/fornecedor', fornecedorRouter);
-*/
+app.use('/fornecedor', fornecedorRouter);*/
+app.use('/nf',nfRouter);
+app.use('/titulo', tituloRouter);
+app.use('/movimentoTitulo', MovimentoTituloRouter);
+
 const db = require('./models');//sequelize le models para criar tabela
 
 async function ApplyMigration(){
