@@ -25,4 +25,8 @@ router.get('/PesquisarProdutoCodigo', function(req,res){
     ProdutoController.PesquisarProdutoCodigo(req,res);
 })
 
+router.delete('/excluirProduto', function(req,res){
+    ProdutoController.excluirProduto(req,res);
+});
+
 module.exports = router;

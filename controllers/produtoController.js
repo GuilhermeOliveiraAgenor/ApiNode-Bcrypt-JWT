@@ -51,6 +51,18 @@ class produtoController{
         }
     }
 
+    async excluirProduto(req,res){
+        
+        const {codigo} = req.body;
+
+        try {
+            const produto = await this.produtoService.excluirProduto(codigo);
+            res.status(200).json(produto);
+        } catch (error) {
+            res.status(500).json({error: 'Erro ao excluir produto'});
+        }
+    }
+
 }
 
 module.exports = produtoController;

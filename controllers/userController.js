@@ -6,11 +6,11 @@ class userController{
 
     async create(req,res){
         
-        const {nome,email,senha} = req.body;
+        const {nome,email,senha,codigoDepartamento} = req.body;
         
         try {
             
-            const usuario = await this.userService.cadastrarUsuario(nome,email,senha);
+            const usuario = await this.userService.cadastrarUsuario(nome,email,senha, codigoDepartamento);
             res.status(200).json(usuario + '\nUsuário cadastrado');
 
         } catch (error) {
@@ -57,7 +57,6 @@ class userController{
             res.status(500).json({error: 'Erro ao pesquisar usuários'});
         }
     }
-
 
 }
 module.exports = userController;

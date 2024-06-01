@@ -1,3 +1,4 @@
+
 const Sequelize = require('sequelize');
 module.exports = (sequelize) =>{
     const MovimentoProduto = sequelize.define('movimentoProduto',{
@@ -41,3 +42,4 @@ module.exports = (sequelize) =>{
     });
     return MovimentoProduto;
 };
+

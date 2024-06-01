@@ -1,3 +1,6 @@
+
+
+
 const Sequelize = require('sequelize');
 module.exports = (sequelize) =>{
 const User = sequelize.define('User', {
@@ -16,9 +19,19 @@ const User = sequelize.define('User', {
         unique: true
     },
     senha:{
-        type: Sequelize.STRING
-    }
-
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    codigoDepartamento:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+            model: 'departamentos',
+            key: 'id'
+        }
+    },
+    
 });
 return User;
 };
+

@@ -62,7 +62,30 @@ class MovimentoProdutoService{
                 }]
                 },
             });
-            return movimentoProduto;
+            return movimentoProduto ? movimentoProduto : null;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async AlterarMovimentoProduto(tipoMovimento,quantidade,precoUnitario,dataMovimento,codigo){
+        try {
+            const movimentoProduto = await this.MovimentoProduto.update(
+                {tipoMovimento: tipoMovimento,quantidade: quantidade, precoUnitario: precoUnitario, dataMovimento: dataMovimento},
+                {
+                    where : {id: codigo},
+                },
+            );
+            return movimentoProduto ? movimentoProduto : null;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async ExcluirMovimentoProduto(codigo){
+        try {
+            const movimentoProduto = await this.MovimentoProduto.destroy({where : {id:codigo}});
+            return movimentoProduto ? movimentoProduto : null;
         } catch (error) {
             console.log(error);
         }

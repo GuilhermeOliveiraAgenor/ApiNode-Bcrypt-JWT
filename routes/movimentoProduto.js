@@ -25,4 +25,12 @@ router.get('/PesquisarDataMovimento', function(req,res){
     MovimentoProdutoController.PesquisarDataMovimento(req,res);
 });
 
+router.put('/alterarMovimento', function(req,res){
+    MovimentoProdutoController.AlterarMovimentoProduto(req,res);
+});
+
+router.delete('/excluirMovimento', function(req,res){
+    MovimentoProdutoController.ExcluirMovimentoProduto(req,res);
+});
+
 module.exports = router;

@@ -57,6 +57,15 @@ class produtoService{
         }
     }
 
+    async excluirProduto(codigo){
+        try {
+            const produto = await this.Produto.destroy({where : {id:codigo}});
+            return produto ? produto : null;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }
 
 module.exports = produtoService;

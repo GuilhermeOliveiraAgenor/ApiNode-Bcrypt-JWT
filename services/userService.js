@@ -11,7 +11,7 @@ class userService{
         this.User = userModel;
     }
 
-    async cadastrarUsuario(nome, email, senha){
+    async cadastrarUsuario(nome, email, senha, codigoDepartamento){
 
         try {
             const hashPassword = await bcrypt.hash(senha, saltRounds);//criptografa a senha digitada e tamanho da criptografia
@@ -19,8 +19,9 @@ class userService{
                 
                 nome: nome,
                 email: email,
-                senha: hashPassword//passa a senha criptografada
-            
+                senha: hashPassword,//passa a senha criptografada
+                codigoDepartamento: codigoDepartamento
+
             });
             usuario.senha = '';
             return usuario ? usuario : null;

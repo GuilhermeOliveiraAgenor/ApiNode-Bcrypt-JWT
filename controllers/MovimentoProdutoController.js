@@ -52,6 +52,31 @@ class MovimentoProdutoController{
         }
     }
 
+    async AlterarMovimentoProduto(req,res){
+
+        const {tipoMovimento, quantidade,precoUnitario,dataMovimento,codigo} = req.body;
+
+        try {
+            const movimentoProduto = await this.MovimentoProdutoService.AlterarMovimentoProduto(tipoMovimento,quantidade,precoUnitario,dataMovimento,codigo);
+            res.status(200).json(movimentoProduto);
+        } catch (error) {
+            res.status(500).json({error: 'Erro ao alterar movimento produto'})
+        }
+    }
+
+    async ExcluirMovimentoProduto(req,res){
+        
+        const {codigo} = req.body;
+        
+        try {
+            const movimentoProduto = await this.MovimentoProdutoService.ExcluirMovimentoProduto(codigo);
+            res.status(200).json(movimentoProduto);
+        } catch (error) {
+            res.status(500).json({error: 'Erro ao excluir movimento produto'});
+        }
+
+    }
+
 }
 
 module.exports = MovimentoProdutoController;
