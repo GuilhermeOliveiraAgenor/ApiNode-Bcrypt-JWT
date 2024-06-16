@@ -6,6 +6,10 @@ class depositoController{
 
     async cadastrarDeposito(req,res){
 
+        const token = req.headers.authorization;
+        if(auth == true){
+            console.log('Usuário logado')
+        }
         const {descricao,ativo} = req.body;
 
         try {

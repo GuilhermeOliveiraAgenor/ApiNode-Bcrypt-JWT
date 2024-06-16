@@ -2,6 +2,7 @@ const db = require('../models');
 const {where, and}= require('sequelize');
 const jwt = require('jsonwebtoken');
 const {Op} = require('sequelize');
+const {movimentoProduto} = require('../models');
 
 class compraService{
 
@@ -9,7 +10,7 @@ class compraService{
         this.Compra = compraModel;
     }
 
-    async cadastrarCompra(codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra){
+    async cadastrarCompra(codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra,codigoDeposito, dataCompra){
         try {
             const compra = await this.Compra.create({
                 codigoFornecedor: codigoFornecedor,
@@ -21,7 +22,16 @@ class compraService{
                 statusCompra: statusCompra
             });
 
-            return compra ? compra : null;
+            const movimento = await movimentoProduto.create({
+                codigoDeposito: codigoDeposito,
+                codigoProduto: codigoProduto,
+                tipoMovimento: 'Entrada',
+                quantidade: quantidade,
+                precoUnitario: custoUnitario,
+                dataMovimento: dataCompra
+            })
+
+            return movimento ? movimento : null;
 
         } catch (error) {
             console.log(error);

@@ -6,10 +6,10 @@ class requisicaoController{
 
     async cadastrarRequisicao(req,res){
 
-        const {comprador,codigoProduto,quantidade,centroCusto,statusRequisicao} = req.body;
+        const {comprador,codigoProduto,quantidade,centroCusto,statusRequisicao,codigoDeposito,precoUnitario,dataCompra} = req.body;
 
         try {
-            const requisicao = await this.requisicaoService.cadastrarRequisicao(comprador,codigoProduto,quantidade,centroCusto,statusRequisicao);
+            const requisicao = await this.requisicaoService.cadastrarRequisicao(comprador,codigoProduto,quantidade,centroCusto,statusRequisicao,codigoDeposito,precoUnitario,dataCompra);
             res.status(200).json(requisicao);
         } catch (error) {
             res.status(500).json({error: 'Erro ao cadastrar requisicao'});

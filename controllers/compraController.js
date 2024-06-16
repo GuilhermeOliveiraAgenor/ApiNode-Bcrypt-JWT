@@ -6,10 +6,10 @@ class compraController{
     
     async cadastrarCompra(req,res){
 
-        const {codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra} = req.body;
+        const {codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra, codigoDeposito, dataCompra} = req.body;
 
         try {
-            const compra = await this.compraService.cadastrarCompra(codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra);
+            const compra = await this.compraService.cadastrarCompra(codigoFornecedor,codigoCotacao,comprador,codigoProduto,quantidade,custoUnitario,statusCompra,codigoDeposito, dataCompra);
             res.status(200).json(compra);
         } catch (error) {
             res.status(500).json({error:'Erro ao cadastrar compra'})

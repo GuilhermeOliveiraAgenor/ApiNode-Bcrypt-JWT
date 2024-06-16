@@ -13,10 +13,20 @@ router.post('/cadastrarVenda', function(req,res){
     VendaController.cadastrarVenda(req,res);
 });
 
-
 router.get('/listarVenda', function(req,res){
     VendaController.listarVenda(req,res);
 });
+
+
+router.get('/ListarVendaData', function(req,res){
+    VendaController.ListarVendaData(req,res);
+});
+
+
+router.get('/ListarVendaNF', function(req,res){
+    VendaController.listarVendaNF(req,res);
+});
+
 
 module.exports = router;
 

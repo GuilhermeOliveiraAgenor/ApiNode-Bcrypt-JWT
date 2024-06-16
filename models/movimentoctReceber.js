@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = (sequelize) =>{
-    const movimentoctreceber = sequelize.define('movimentoctreceber',{
+    const movimentoctReceber = sequelize.define('movimentoctreceber',{
         id:{
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -10,7 +10,7 @@ module.exports = (sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: false,
             references:{
-                model: 'titulosrecebers',
+                model: 'titulorecebers',
                 key: 'id'
             }
         },
@@ -36,6 +36,6 @@ module.exports = (sequelize) =>{
         },
     });
 
-    return movimentoctreceber;
+    return movimentoctReceber;
 
 }

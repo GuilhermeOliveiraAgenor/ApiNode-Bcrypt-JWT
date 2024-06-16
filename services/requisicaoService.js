@@ -1,5 +1,6 @@
 const db = require('../models');
 const {where,and} = require('sequelize');
+const {movimentoProduto} = require('../models');
 
 class requisicaoService{
 
@@ -7,7 +8,7 @@ class requisicaoService{
         this.Requisicao = requisicaoModel;
     }
 
-    async cadastrarRequisicao(comprador,codigoProduto,quantidade,centroCusto,statusRequisicao){
+    async cadastrarRequisicao(comprador,codigoProduto,quantidade,centroCusto,statusRequisicao,codigoDeposito,precoUnitario,dataCompra){
 
         try {
             const requisicao = await this.Requisicao.create({
@@ -18,7 +19,17 @@ class requisicaoService{
                 statusRequisicao: statusRequisicao
             })
 
-            return requisicao ? requisicao : null;
+            
+            const movimento = await movimentoProduto.create({
+                codigoDeposito: codigoDeposito,
+                codigoProduto: codigoProduto,
+                tipoMovimento: 'Entrada',
+                quantidade: quantidade,
+                precoUnitario: precoUnitario,
+                dataMovimento: dataCompra
+            })
+
+            return movimento ? movimento : null;
 
         } catch (error) {
             console.log(error);
