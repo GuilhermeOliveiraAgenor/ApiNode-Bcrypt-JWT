@@ -7,13 +7,55 @@ class movimentotituloService{
         this.movimentotitulo = movimentotituloModel;
     }
 
-    async CadastrarMovimentoTitulo(codigoTitulo,dataMovimento,tipoMovimento,valorMovimento,valorMulta,valorJuros){
+    async CadastrarMovimentoAbertura(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros){
 
         try {
             const movimento = await this.movimentotitulo.create({
                 codigoTitulo: codigoTitulo,
                 dataMovimento: dataMovimento,
-                tipoMovimento: tipoMovimento,
+                tipoMovimento: 'Abertura',
+                valorMovimento: valorMovimento,
+                valorMulta: valorMulta,
+                valorJuros: valorJuros
+            });
+
+            return movimento ? movimento : null;
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    
+    async CadastrarMovimentoCancelamento(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros){
+
+        try {
+            const movimento = await this.movimentotitulo.create({
+                codigoTitulo: codigoTitulo,
+                dataMovimento: dataMovimento,
+                tipoMovimento: 'Cancelamento',
+                valorMovimento: valorMovimento,
+                valorMulta: valorMulta,
+                valorJuros: valorJuros
+            });
+
+            return movimento ? movimento : null;
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    
+    async CadastrarMovimentoPagamento(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros){
+
+        try {
+            const movimento = await this.movimentotitulo.create({
+                codigoTitulo: codigoTitulo,
+                dataMovimento: dataMovimento,
+                tipoMovimento: 'Pagamento',
                 valorMovimento: valorMovimento,
                 valorMulta: valorMulta,
                 valorJuros: valorJuros

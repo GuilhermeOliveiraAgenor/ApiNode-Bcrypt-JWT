@@ -4,12 +4,37 @@ class movimentoctreceberController{
         this.movimentoctreceberService = movimentoctreceberService;
     }
 
-    async CadastrarMovimentoTituloReceber(req,res){
+    async CadastrarMovimentoTituloAbertura(req,res){
 
-        const {codigoTitulo,dataMovimento,tipoMovimento,valorMovimento,valorMulta,valorJuros} = req.body;
+        const {codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros} = req.body;
 
         try {
-            const movimento = await this.movimentoctreceberService.CadastrarMovimentoTituloReceber(codigoTitulo,dataMovimento,tipoMovimento,valorMovimento,valorMulta,valorJuros);
+            const movimento = await this.movimentoctreceberService.CadastrarMovimentoTituloAbertura(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros);
+            res.status(200).json(movimento);
+        } catch (error) {
+            res.status(500).json({error: 'Erro ao cadastrar movimento'});
+        }
+    }
+
+    async CadastrarMovimentoTituloCancelamento(req,res){
+
+        const {codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros} = req.body;
+
+        try {
+            const movimento = await this.movimentoctreceberService.CadastrarMovimentoTituloCancelamento(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros);
+            res.status(200).json(movimento);
+        } catch (error) {
+            res.status(500).json({error: 'Erro ao cadastrar movimento'});
+        }
+    }
+
+    
+    async CadastrarMovimentoTituloPagamento(req,res){
+
+        const {codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros} = req.body;
+
+        try {
+            const movimento = await this.movimentoctreceberService.CadastrarMovimentoTituloPagamento(codigoTitulo,dataMovimento,valorMovimento,valorMulta,valorJuros);
             res.status(200).json(movimento);
         } catch (error) {
             res.status(500).json({error: 'Erro ao cadastrar movimento'});

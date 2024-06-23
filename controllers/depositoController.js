@@ -1,3 +1,6 @@
+const auth = require('../controllers/authController');
+const Auth = new auth();
+
 class depositoController{
 
     constructor(depositoService){
@@ -6,18 +9,14 @@ class depositoController{
 
     async cadastrarDeposito(req,res){
 
-        const token = req.headers.authorization;
-        if(auth == true){
-            console.log('Usuário logado')
-        }
-        const {descricao,ativo} = req.body;
+            const {descricao,ativo} = req.body;
 
-        try {
-            const deposito = await this.depositoService.cadastrarDeposito(descricao, ativo);
-            res.status(200).json(deposito);
-        } catch (error) {
-            res.status(500).json({error:'Erro ao cadastrar usuário'})
-        }
+            try {
+                const deposito = await this.depositoService.cadastrarDeposito(descricao, ativo);
+                return res.status(200).json(deposito);
+            } catch (error) {
+                res.status(500).json({error:'Erro ao cadastrar usuário'})
+            }
 
     }
 

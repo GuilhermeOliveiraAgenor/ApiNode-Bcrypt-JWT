@@ -8,12 +8,20 @@ const tokenUsuario = 'Token';
 class authController{
 
     async autenticacao(token){
+
         try {
-            const decoded = jwt.verify(token, 'Token');
-            if(decoded){
-              return true;
-           }
-        } catch (error) {
+            jwt.verify(token, 'Token', (err, data) => {
+                if(err){
+                    console.log('Erro ao fazer login')
+                    return false
+                }else{
+                    console.log(data);
+                    return true;
+                }
+            })
+            
+        }
+         catch (error) {
             console.log(error);
         }
     }

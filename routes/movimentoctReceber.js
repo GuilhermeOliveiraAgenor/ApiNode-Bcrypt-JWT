@@ -9,8 +9,16 @@ const MovimentoctreceberService = new movimentoctreceberService(db.movimentoctre
 const movimentoctreceberController = require('../controllers/movimentoctreceberController');
 const MovimentoctreceberController = new movimentoctreceberController(MovimentoctreceberService);
 
-router.post('/cadastrarMovimento', function(req,res){
-    MovimentoctreceberController.CadastrarMovimentoTituloReceber(req,res);
+router.post('/cadastrarMovimentoAbertura', function(req,res){
+    MovimentoctreceberController.CadastrarMovimentoTituloAbertura(req,res);
+});
+
+router.post('/cadastrarMovimentoCancelamento', function(req,res){
+    MovimentoctreceberController.CadastrarMovimentoTituloCancelamento(req,res);
+});
+
+router.post('/cadastrarMovimentoPagamento', function(req,res){
+    MovimentoctreceberController.CadastrarMovimentoTituloPagamento(req,res);
 });
 
 module.exports = router;
